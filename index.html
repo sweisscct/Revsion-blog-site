@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Site</title>
+</head>
+<body>
+    <!-- 
+    header - site name
+    Main message
+    blog posts
+    new blog post form
+    page numbers
+    -->
+    <header>
+        <h1 id="site-name">Name TBD</h1>
+    </header>
+    <main>
+        <h1>Welcome to my new blog!</h1>
+        <section>
+            <!-- Example blog post -->
+            <article class="blog-post">
+                <h2 class="post-title">Post title</h2>
+                <h3 class="date-made">Date:</h3>
+                <p class="post-text">This is the post text</p>
+            </article>
+        </section>
+        
+        <section>
+            <form action="/new-post" method="post">
+                <label for="post-title">Title:</label>
+                <input name="post-title" type="text">
+                <br>
+                <label for="post-text">Text:</label>
+                <br>
+                <textarea name="post-text" id="" cols="70" rows="10"></textarea>
+                <br>
+                <button type="submit">New Post</button>
+            </form>
+        </section>
+        <section>
+            <!-- pagination -->
+        </section>
+    </main>
+
+
+</body>
+</html>
