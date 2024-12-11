@@ -25,6 +25,13 @@
                 <h3 class="date-made">Date:</h3>
                 <p class="post-text">This is the post text</p>
             </article>
+            <% posts.reverse().forEach(post => { %>
+                <article class="blog-post">
+                    <h2 class="post-title"><%= post.title %></h2>
+                    <h3 class="date-made"><%= post.date %></h3>
+                    <p class="post-text"><%= post.text %></p>
+                </article>                 
+            <% }) %>
         </section>
         
         <section>
