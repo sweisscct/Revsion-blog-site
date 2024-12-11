@@ -25,13 +25,28 @@
                 <h3 class="date-made">Date:</h3>
                 <p class="post-text">This is the post text</p>
             </article>
-            <% posts.reverse().forEach(post => { %>
+            <% const postStart = POSTS_PER_PAGE * (currentPage-1); const postEnd = postStart + POSTS_PER_PAGE %>
+            <% for (let i = postStart; i < postEnd && i < posts.length; i++) { %>
                 <article class="blog-post">
-                    <h2 class="post-title"><%= post.title %></h2>
-                    <h3 class="date-made"><%= post.date %></h3>
-                    <p class="post-text"><%= post.text %></p>
+                    <h2 class="post-title"><%= posts[i].title %></h2>
+                    <h3 class="date-made"><%= posts[i].date %></h3>
+                    <p class="post-text"><%= posts[i].text %></p>
                 </article>                 
-            <% }) %>
+            <% } %>
+
+            <!-- Pagination  goes here -->
+             <nav class="pagination">
+                <% const numLinks = Math.ceil(posts.length / POSTS_PER_PAGE); %>
+                <a href="/<%= currentPage - 1 %>" class="pagination-link"><button <% if (currentPage == 1) { %>
+                 disabled
+                <% } %> >Previous</button></a>
+                <% for( let pageNum = 1; pageNum <= numLinks; pageNum++ ) { %>
+                    <a href="/<%= pageNum %>" class="pagination-link"><%= pageNum %></a>
+                <% } %>
+                <a href="/<%= +currentPage + 1 %>" class="pagination-link"><button <% if (currentPage == numLinks) { %>
+                    disabled
+                <% } %> >Next</button></a>
+             </nav>
         </section>
         
         <section>

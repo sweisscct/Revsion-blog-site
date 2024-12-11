@@ -3,7 +3,7 @@ const ejs = require('ejs');
 
 // Config values
 const PORT = 3000;
-const POSTS_PER_PAGE = 5;
+const POSTS_PER_PAGE = 3;
 
 // snake_case
 // camelCase
@@ -17,17 +17,24 @@ app.use(express.urlencoded( {extended: true }));
 const posts = [];
 
 // Counting the pages from 1
-let currentPage = 1;
 
 app.get('/', (req, res) => {
     // res.render("index.ejs", { posts });
     // res.render("index.ejs", { posts: posts });
-    res.render("index.ejs", { posts: posts.reverse() });
+    res.render("index.ejs", { posts, POSTS_PER_PAGE, currentPage: 1 });
+});
+
+app.get('/:currentPage', (req, res) => {
+    res.render("index.ejs", { posts, POSTS_PER_PAGE, currentPage: req.params.currentPage })
 });
 /*
     Process and display new post data
 
 */
+// app.get('/:currentPage', (req, res) => {
+//     console.log(req.params.currentPage);
+//     res.send(req.params.currentPage);
+// });
 
 
 app.post('/new-post', (req, res) => {
